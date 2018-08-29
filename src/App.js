@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Contact from './components/Contacts';
 
 // css
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // this is the main Component, everything links into here
@@ -18,12 +19,18 @@ class App extends Component {
       <div className="App">
         {/* this will pass a value to functional component */}
         <Header />
-        <Contact name="John Doe" email="jdoe@gmail.com" phone="555.555.5555" />
-        <Contact
-          name="Karen Smith"
-          email="ksmith@gmail.com"
-          phone="555.666.6666"
-        />
+        <div className="container">
+          <Contact
+            name="John Doe"
+            email="jdoe@gmail.com"
+            phone="555.555.5555"
+          />
+          <Contact
+            name="Karen Smith"
+            email="ksmith@gmail.com"
+            phone="555.666.6666"
+          />
+        </div>
       </div>
     );
   }
