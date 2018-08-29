@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // components
 import Header from './components/Header';
-import Contact from './components/Contacts';
+import Contacts from './components/Contacts';
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,16 +20,7 @@ class App extends Component {
         {/* this will pass a value to functional component */}
         <Header />
         <div className="container">
-          <Contact
-            name="John Doe"
-            email="jdoe@gmail.com"
-            phone="555.555.5555"
-          />
-          <Contact
-            name="Karen Smith"
-            email="ksmith@gmail.com"
-            phone="555.666.6666"
-          />
+          <Contacts />
         </div>
       </div>
     );

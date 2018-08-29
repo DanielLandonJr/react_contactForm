@@ -1,36 +1,49 @@
-// this type of component will have state....or data that can change
-
-// created using emmet command rcc then tab.
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import Contact from './Contact';
 
 export default class Contacts extends Component {
+  // no need for constructor if all you need is the state
+  state = {
+    contacts: [
+      {
+        id: 1,
+        name: 'John Doe',
+        email: 'jdoe@gmail.com',
+        phone: '111.111.1111'
+      },
+      {
+        id: 2,
+        name: 'Karen Smith',
+        email: 'ksmith@gmail.com',
+        phone: '222.222.2222'
+      },
+      {
+        id: 3,
+        name: 'Henry Johnson',
+        email: 'hjohnson@gmail.com',
+        phone: '333.333.3333'
+      }
+    ]
+  };
+
   render() {
-    // to get props value use this.props.propName
-    // destructure the this.props to get the parts that we want
-    const { name, email, phone } = this.props;
+    // pull contacts from state
+    const { contacts } = this.state;
+
     return (
-      <div className="card card-body mb-3">
-        <h4>{name}</h4>
-        <ul className="list-group">
-          <li className="list-group-item">eMail: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-        </ul>
+      <div>
+        {contacts.map(contact => (
+          // pass entire contact object instead of each item separately
+          <Contact key={contact.id} contact={contact} />
+          // // pass individual items to contact
+          // <Contact
+          //   key={contact.id}
+          //   name={contact.name}
+          //   email={contact.email}
+          //   phone={contact.phone}
+          // />
+        ))}
       </div>
     );
   }
 }
-
-// prop defaults
-Contacts.defaultProps = {
-  name: 'Name Not Found',
-  email: 'No Email Found',
-  phone: 'No Phone Found'
-};
-
-// prop types
-Contacts.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired
-};
