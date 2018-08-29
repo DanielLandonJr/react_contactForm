@@ -17,7 +17,7 @@ class App extends Component {
       // everything inside the div tag below is what is displayed for the component
       <div className="App">
         {/* this will pass a value to functional component */}
-        <Header branding="Contact Manager" />
+        <Header />
         <Contact name="John Doe" email="jdoe@gmail.com" phone="555.555.5555" />
         <Contact
           name="Karen Smith"

@@ -3,6 +3,7 @@
 // created using rfc
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // include props here and you can pass in properties from the calling app
 const Header = props => {
@@ -13,6 +14,17 @@ const Header = props => {
       <h1>{branding}</h1>
     </div>
   );
+};
+
+// default props values
+Header.defaultProps = {
+  branding: 'My App'
+};
+
+// prop types
+Header.propTypes = {
+  // declare that branding is a string and is required
+  branding: PropTypes.string.isRequired
 };
 
 export default Header;

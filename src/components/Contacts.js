@@ -2,6 +2,7 @@
 
 // created using emmet command rcc then tab.
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Contacts extends Component {
   render() {
@@ -19,3 +20,17 @@ export default class Contacts extends Component {
     );
   }
 }
+
+// prop defaults
+Contacts.defaultProps = {
+  name: 'Name Not Found',
+  email: 'No Email Found',
+  phone: 'No Phone Found'
+};
+
+// prop types
+Contacts.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired
+};
