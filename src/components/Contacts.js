@@ -5,12 +5,15 @@ import React, { Component } from 'react';
 
 export default class Contacts extends Component {
   render() {
+    // to get props value use this.props.propName
+    // destructure the this.props to get the parts that we want
+    const { name, email, phone } = this.props;
     return (
       <div>
-        <h4>John Doe</h4>
+        <h4>{name}</h4>
         <ul>
-          <li>eMail: jdoe@gmail.com</li>
-          <li>Phone: 555.555.5555</li>
+          <li>eMail: {email}</li>
+          <li>Phone: {phone}</li>
         </ul>
       </div>
     );
