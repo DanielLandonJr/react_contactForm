@@ -26,6 +26,17 @@ export default class Contacts extends Component {
     ]
   };
 
+  deleteContact = (id, event) => {
+    // remove contacts from state
+    const { contacts } = this.state;
+
+    const newContacts = contacts.filter(contact => contact.id !== id);
+
+    this.setState({
+      contacts: newContacts
+    });
+  };
+
   render() {
     // pull contacts from state
     const { contacts } = this.state;
@@ -35,8 +46,14 @@ export default class Contacts extends Component {
       <React.Fragment>
         {/* <div> */}
         {contacts.map(contact => (
+          // each item must have a unique identifier...in this case we will use the id from state
           // pass entire contact object instead of each item separately
-          <Contact key={contact.id} contact={contact} />
+          // deleteClickHandler is a property that will allow the contact to call back to this class to delete item from state
+          <Contact
+            key={contact.id}
+            contact={contact}
+            deleteClickHandler={this.deleteContact.bind(this, contact.id)}
+          />
           // // pass individual items to contact
           // <Contact
           //   key={contact.id}

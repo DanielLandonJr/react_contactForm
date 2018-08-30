@@ -16,6 +16,12 @@ export default class Contacts extends Component {
   //   this.setState({ showContactInfo: !this.state.showContactInfo });
   // };
 
+  onDeleteClick = event => {
+    // call this property so that we can tell the Contacts.js to delete something
+    // this is a porperty so it must be added to the proptypes at the bottom
+    this.props.deleteClickHandler();
+  };
+
   render() {
     // to get props value use this.props.propName
     // destructure the this.props to get the parts that we want
@@ -39,6 +45,12 @@ export default class Contacts extends Component {
               this.setState({ showContactInfo: !this.state.showContactInfo });
             }}
             className="fas fa-sort-down"
+            style={{ cursor: 'pointer' }}
+          />
+          <div
+            className="fas fa-times"
+            style={{ cursor: 'pointer', color: 'red', float: 'right' }}
+            onClick={this.onDeleteClick}
           />
         </h4>
         {/* if showContactInfo true then show else not show */}
@@ -55,5 +67,6 @@ export default class Contacts extends Component {
 
 // prop types
 Contacts.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
+  deleteClickHandler: PropTypes.func.isRequired
 };
