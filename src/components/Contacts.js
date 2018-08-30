@@ -31,7 +31,9 @@ export default class Contacts extends Component {
     const { contacts } = this.state;
 
     return (
-      <div>
+      // we dont need to use a div tag Here. we dont really want to add another div tag to the dom but we do need to wrap this in some sort of 'container'. we can use React.Fragment instead
+      <React.Fragment>
+        {/* <div> */}
         {contacts.map(contact => (
           // pass entire contact object instead of each item separately
           <Contact key={contact.id} contact={contact} />
@@ -43,7 +45,8 @@ export default class Contacts extends Component {
           //   phone={contact.phone}
           // />
         ))}
-      </div>
+        {/* </div> */}
+      </React.Fragment>
     );
   }
 }
