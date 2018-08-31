@@ -23,7 +23,7 @@ class App extends Component {
     return (
       // in order to use the this.context.js data we must wrap everything in the app inside the provider tags
       <Provider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <div className="App">
             <Header />
             <div className="container">
