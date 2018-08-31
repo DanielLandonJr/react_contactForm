@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 
 const Context = React.createContext();
 
+// evaluate action type
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'DELETE_CONTACT':
+      // spread operator
+      return {
+        ...state,
+        // filter the state so that is no longer contains the item to delete
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        )
+      };
+    default:
+      return state;
+  }
+};
+
 export class Provider extends Component {
   state = {
     contacts: [
@@ -23,7 +40,9 @@ export class Provider extends Component {
         email: 'hjohnson@gmail.com',
         phone: '333.333.3333'
       }
-    ]
+    ],
+    // action passed in the state that then calls reducer and passes the state and action to the reducer
+    dispatch: action => this.setState(state => reducer(state, action))
   };
 
   render() {
@@ -37,5 +56,5 @@ export class Provider extends Component {
 }
 
 // exporting like this will allow us to just use 'Cunsumer' in our code
-// alos exporting everything like we are doing will allow us to access 'global' functions as well as data
+// also exporting everything like we are doing will allow us to access 'global' functions as well as data
 export const Consumer = Context.Consumer;
