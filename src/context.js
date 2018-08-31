@@ -28,29 +28,28 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
-    contacts: [
-      {
-        id: 1,
-        name: 'John Doe',
-        email: 'jdoe@gmail.com',
-        phone: '111.111.1111'
-      },
-      {
-        id: 2,
-        name: 'Karen Smith',
-        email: 'ksmith@gmail.com',
-        phone: '222.222.2222'
-      },
-      {
-        id: 3,
-        name: 'Henry Johnson',
-        email: 'hjohnson@gmail.com',
-        phone: '333.333.3333'
-      }
-    ],
+    // contacts: [
+    //   {
+    //     id: 1,
+    //     name: 'John Doe',
+    //     email: 'jdoe@gmail.com',
+    //     phone: '111.111.1111'
+    //   }
+    // ],
+    contacts: [],
     // action passed in the state that then calls reducer and passes the state and action to the reducer
     dispatch: action => this.setState(state => reducer(state, action))
   };
+
+  componentDidMount() {
+    // makecall to api to get place holder data
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ contacts: data });
+      })
+      .catch(error => console.log(error));
+  }
 
   render() {
     return (
