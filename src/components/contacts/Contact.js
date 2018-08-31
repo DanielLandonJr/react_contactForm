@@ -35,7 +35,7 @@ export default class Contacts extends Component {
           return (
             <div className="card card-body mb-3">
               <h4>
-                {name}
+                {name}{' '}
                 <i
                   onClick={() => {
                     this.setState({

@@ -19,8 +19,18 @@ const reducer = (state, action) => {
       // spread operator
       return {
         ...state,
-        // filter the state so that is no longer contains the item to delete
         contacts: [action.payload, ...state.contacts]
+      };
+    case 'UPDATE_CONTACT':
+      // spread operator
+      return {
+        ...state,
+        contacts: state.contacts.map(
+          contact =>
+            contact.id === action.payload.id
+              ? (contact = action.payload)
+              : contact
+        )
       };
     default:
       return state;

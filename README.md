@@ -1,6 +1,8 @@
 # Contact Manager
 
-This is a contact manager application created with react.
+This is a contact manager application created with react and using context.api for state.
+
+`npm install` to setup
 
 ---
 
