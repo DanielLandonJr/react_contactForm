@@ -8,6 +8,17 @@ export default class AddContact extends Component {
     phone: ''
   };
 
+  onChange = event => {
+    // allows us to change the values in the fields, does not update the state
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+
+    console.log(this.state);
+  };
+
   render() {
     const { name, email, phone } = this.state;
 
@@ -15,7 +26,7 @@ export default class AddContact extends Component {
       <div className="card mb-3">
         <div className="card-header">Add Contact</div>
         <div className="card-body">
-          <form>
+          <form onSubmit={this.onSubmit}>
             {/* because value has been set for the fileds this now considered a controlled component. need to create event handler for change to make any changes to the fields */}
             <div className="form-group">
               <label htmlFor="name">Name:</label>
@@ -26,6 +37,7 @@ export default class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Name ..."
                 value={name}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -37,6 +49,7 @@ export default class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Email ..."
                 value={email}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -48,6 +61,7 @@ export default class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Phone Number ..."
                 value={phone}
+                onChange={this.onChange}
               />
             </div>
             <input
