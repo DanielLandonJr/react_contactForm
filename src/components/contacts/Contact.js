@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Consumer } from '../../context';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class Contacts extends Component {
   state = {
@@ -34,7 +35,7 @@ export default class Contacts extends Component {
           return (
             <div className="card card-body mb-3">
               <h4>
-                {name}{' '}
+                {name}
                 <i
                   onClick={() => {
                     this.setState({
@@ -44,11 +45,22 @@ export default class Contacts extends Component {
                   className="fas fa-sort-down"
                   style={{ cursor: 'pointer' }}
                 />
-                <div
+                <i
                   className="fas fa-times"
                   style={{ cursor: 'pointer', color: 'red', float: 'right' }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
+                <Link to={`contact/edit/${id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      cursor: 'pointer',
+                      color: 'black',
+                      marginRight: '1rem',
+                      float: 'right'
+                    }}
+                  />
+                </Link>
               </h4>
               {showContactInfo ? (
                 <ul className="list-group">
