@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import uuid from 'uuid';
+import TextInputGroup from '../layout/TextInputGroup';
 
 export default class AddContact extends Component {
   // form objects are part of the state
@@ -52,42 +53,30 @@ export default class AddContact extends Component {
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   {/* because value has been set for the fileds this now considered a controlled component. need to create event handler for change to make any changes to the fields */}
-                  <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="form-control form-control-lg"
-                      placeholder="Enter Name ..."
-                      value={name}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="form-control form-control-lg"
-                      placeholder="Enter Email ..."
-                      value={email}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone:</label>
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      className="form-control form-control-lg"
-                      placeholder="Enter Phone Number ..."
-                      value={phone}
-                      onChange={this.onChange}
-                    />
-                  </div>
+                  <TextInputGroup
+                    label="Name:"
+                    name="name"
+                    value={name}
+                    placeHolder="Enter Name ..."
+                    type="text"
+                    onChange={this.onChange}
+                  />
+                  <TextInputGroup
+                    label="Email:"
+                    name="email"
+                    value={email}
+                    placeHolder="Enter Email ..."
+                    type="email"
+                    onChange={this.onChange}
+                  />
+                  <TextInputGroup
+                    label="Phone:"
+                    name="phone"
+                    value={phone}
+                    placeHolder="Enter Phone Number ..."
+                    type="text"
+                    onChange={this.onChange}
+                  />
                   <input
                     type="submit"
                     value="Add Contact"
