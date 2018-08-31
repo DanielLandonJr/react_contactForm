@@ -9,17 +9,16 @@ export default class Contacts extends Component {
     showContactInfo: false
   };
 
-  onDeleteClick = (id, dispatch, event) => {
+  onDeleteClick = async (id, dispatch, event) => {
     // api call to delete item from data
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(response => {
-        // call the dispatch item in the state to remove contact
-        dispatch({ type: 'DELETE_CONTACT', payload: id });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+
+      // call the dispatch item in the state to remove contact
+      dispatch({ type: 'DELETE_CONTACT', payload: id });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {

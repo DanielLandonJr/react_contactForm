@@ -42,16 +42,17 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     // make call to api to get place holder data
-    axios
-      .get('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
-        this.setState({ contacts: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    try {
+      const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/users'
+      );
+
+      this.setState({ contacts: response.data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
