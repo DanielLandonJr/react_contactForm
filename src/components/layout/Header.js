@@ -4,6 +4,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // can include external css file and css will be applied as normal but only to this component
 // import './CSS_FILE_NAME.css';
@@ -21,9 +22,25 @@ const Header = props => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              {/* basic a tag for standard linking */}
+              {/* <a href="/" className="nav-link">
                 Home
-              </a>
+              </a> */}
+
+              {/* how to link using react routes */}
+              <Link to="/" className="nav-link">
+                <i className="fas fa-home" /> Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact/add" className="nav-link">
+                <i className="fas fa-plus" /> Add
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link">
+                <i className="fas fa-question" /> About
+              </Link>
             </li>
           </ul>
         </div>

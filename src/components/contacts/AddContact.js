@@ -53,6 +53,9 @@ export default class AddContact extends Component {
       phone: '',
       errors: {}
     });
+
+    // redirect back to contacts pages to see new contact
+    this.props.history.push('/');
   };
 
   render() {
