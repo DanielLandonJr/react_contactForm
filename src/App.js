@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Provider } from './context';
 
@@ -6,6 +7,7 @@ import { Provider } from './context';
 import Header from './components/layout/Header';
 import Contacts from './components/contacts/Contacts';
 import AddContact from './components/contacts/AddContact';
+import About from './components/pages/About';
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,13 +18,18 @@ class App extends Component {
     return (
       // in order to use the this.context.js data we must wrap everything in the app inside the provider tags
       <Provider>
-        <div className="App">
-          <Header />
-          <div className="container">
-            <AddContact />
-            <Contacts />
+        <Router>
+          <div className="App">
+            <Header />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Contacts} />
+                <Route exact path="/contact/add" component={AddContact} />
+                <Route exact path="/about" component={About} />
+              </Switch>
+            </div>
           </div>
-        </div>
+        </Router>
       </Provider>
     );
   }
