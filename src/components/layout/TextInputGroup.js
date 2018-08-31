@@ -1,6 +1,7 @@
 // functional component
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const TextInputGroup = ({
   label,
@@ -8,7 +9,8 @@ const TextInputGroup = ({
   value,
   placeHolder,
   type,
-  onChange
+  onChange,
+  error
 }) => {
   return (
     <div className="form-group">
@@ -17,11 +19,14 @@ const TextInputGroup = ({
         type={type}
         name={name}
         id={name}
-        className="form-control form-control-lg"
+        className={classnames('form-control  form-control-lg', {
+          'is-invalid': error
+        })}
         placeholder={placeHolder}
         value={value}
         onChange={onChange}
       />
+      <div className="invalid-feedback">{error}</div>
     </div>
   );
 };
@@ -32,7 +37,8 @@ TextInputGroup.protTypes = {
   value: PropTypes.string.isRequired,
   placeHolder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string
 };
 
 TextInputGroup.defaultProp = {

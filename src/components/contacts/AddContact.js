@@ -8,7 +8,8 @@ export default class AddContact extends Component {
   state = {
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    errors: {}
   };
 
   onChange = event => {
@@ -21,6 +22,20 @@ export default class AddContact extends Component {
 
     // get values from state
     const { name, email, phone } = this.state;
+
+    // check for errors
+    if (name === '') {
+      this.setState({ errors: { name: 'Name Is Required!' } });
+      return;
+    }
+    if (email === '') {
+      this.setState({ errors: { email: 'Email Is Required!' } });
+      return;
+    }
+    if (phone === '') {
+      this.setState({ errors: { phone: 'Phone Number Is Required!' } });
+      return;
+    }
 
     const newContact = {
       id: uuid(),
@@ -35,12 +50,13 @@ export default class AddContact extends Component {
     this.setState({
       name: '',
       email: '',
-      phone: ''
+      phone: '',
+      errors: {}
     });
   };
 
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone, errors } = this.state;
 
     return (
       <Consumer>
@@ -60,6 +76,7 @@ export default class AddContact extends Component {
                     placeHolder="Enter Name ..."
                     type="text"
                     onChange={this.onChange}
+                    error={errors.name}
                   />
                   <TextInputGroup
                     label="Email:"
@@ -68,6 +85,7 @@ export default class AddContact extends Component {
                     placeHolder="Enter Email ..."
                     type="email"
                     onChange={this.onChange}
+                    error={errors.email}
                   />
                   <TextInputGroup
                     label="Phone:"
@@ -76,6 +94,7 @@ export default class AddContact extends Component {
                     placeHolder="Enter Phone Number ..."
                     type="text"
                     onChange={this.onChange}
+                    error={errors.phone}
                   />
                   <input
                     type="submit"
