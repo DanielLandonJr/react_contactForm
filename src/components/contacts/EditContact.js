@@ -43,6 +43,8 @@ export default class EditContact extends Component {
       phone: phone
     };
 
+    // this.props.match.params allows you to get the url value indicated in the route.
+    // see the route for EditContact component in app.js
     const { id } = this.props.match.params;
 
     try {

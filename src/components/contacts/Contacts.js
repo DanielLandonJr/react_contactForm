@@ -12,6 +12,7 @@ export default class Contacts extends Component {
           const { contacts } = value;
 
           return (
+            // fragment is used when you need to enclose everything for return but dont want to add additional tags to the dom
             <React.Fragment>
               <h1 className="display-4 mb-2">
                 <span className="text-danger">Contact</span> List

@@ -28,7 +28,7 @@ export default class Contacts extends Component {
     const { showContactInfo } = this.state;
 
     return (
-      // wrap everything inside consumer so we can access the state
+      // wrap everything inside consumer so we can access the state from context.api
       <Consumer>
         {value => {
           const { dispatch } = value;
@@ -37,6 +37,7 @@ export default class Contacts extends Component {
               <h4>
                 {name}{' '}
                 <i
+                  // this is pulling from local state
                   onClick={() => {
                     this.setState({
                       showContactInfo: !this.state.showContactInfo

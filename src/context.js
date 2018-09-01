@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Context = React.createContext();
 
-// evaluate action type
+// used to make changes to state, takes one state and gives you another
 const reducer = (state, action) => {
   switch (action.type) {
     case 'DELETE_CONTACT':
@@ -52,8 +52,9 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
+  // lifecycle function...called before the component is actually mounted. perfect place to preload data etc
   async componentDidMount() {
-    // make call to api to get place holder data
+    // make call to api to get place holder data...async/await
     try {
       const response = await axios.get(
         'https://jsonplaceholder.typicode.com/users'

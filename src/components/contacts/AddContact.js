@@ -70,6 +70,7 @@ export default class AddContact extends Component {
     const { name, email, phone, errors } = this.state;
 
     return (
+      // if i want to use anything from the context i need to wrap it in a consumer tag, i can now call anything that is in context.js
       <Consumer>
         {value => {
           const { dispatch } = value;
@@ -78,6 +79,7 @@ export default class AddContact extends Component {
             <div className="card mb-3">
               <div className="card-header">Add Contact</div>
               <div className="card-body">
+                {/* on form submit call dispatch which is part of the consumer */}
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   {/* because value has been set for the fileds this now considered a controlled component. need to create event handler for change to make any changes to the fields */}
                   <TextInputGroup

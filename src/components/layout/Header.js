@@ -1,5 +1,3 @@
-// functional CompositionEvent, static no changin data
-
 // created using rfc
 
 import React from 'react';
@@ -46,16 +44,6 @@ const Header = props => {
         </div>
       </div>
     </nav>
-
-    // <div>
-    //   <h1>{branding}</h1>
-
-    //   {/* inline style */}
-    //   {/* <h1 style={{ color: 'red', fontSize: '50px' }}> {branding}</h1> */}
-
-    //   {/* included as varialbe declared below */}
-    //   {/* <h1 style={headingStyle}> {branding}</h1> */}
-    // </div>
   );
 };
 
@@ -70,18 +58,4 @@ Header.propTypes = {
   branding: PropTypes.string.isRequired
 };
 
-// const headingStyle = {
-//   color: 'red',
-//   fontSize: '50px'
-// };
-
 export default Header;
-
-// this is default if you use rfc command. if you use this then the react extension in chrome will show 'undefined' for tag name. using syntax above will change the name of the tag to what is exported. may be able to change this later with better understanding of export
-// export default () => {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
