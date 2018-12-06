@@ -16,6 +16,9 @@ const About = () => {
     <div>
       <h1 className="display-4">About Contact Manager</h1>
       <p className="lead">Simple App To Manage Contacts</p>
+      <p className="lead">Simple App To Manage Contacts</p>
+      <p className="lead">Simple App To Manage Contacts</p>
+      <p className="lead">Simple App To Manage Contacts</p>
       <p className="text-secondary">v. 1.0.0</p>
     </div>
   );
